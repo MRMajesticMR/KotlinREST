@@ -1,0 +1,48 @@
+import org.springframework.boot.gradle.plugin.SpringBootPlugin
+
+buildscript {
+    ext.kotlin_version = '1.2.10'
+
+    repositories {
+        mavenCentral()
+        maven { url "http://repo.spring.io/snapshot" }
+        maven { url "http://repo.spring.io/milestone" }
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:2.0.5.RELEASE"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+apply plugin: 'idea'
+apply plugin: SpringBootPlugin
+apply plugin: 'kotlin'
+
+jar {
+    baseName = 'test-spring-kotlin-project'
+    version = '0.1.0'
+}
+
+group 'ru.test'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven { url "http://repo.spring.io/snapshot" }
+    maven { url "http://repo.spring.io/milestone" }
+}
+
+dependencies {
+    compile "org.springframework.boot:spring-boot-starter-web:2.0.5.RELEASE"
+    compile "org.springframework:spring-jdbc:5.1.0.RELEASE"
+    compile "com.fasterxml.jackson.module:jackson-module-kotlin:2.9.4"
+
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
