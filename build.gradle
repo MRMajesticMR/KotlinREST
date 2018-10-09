@@ -38,9 +38,11 @@ repositories {
 }
 
 dependencies {
-    compile "org.springframework.boot:spring-boot-starter-web:2.0.5.RELEASE"
-    compile "org.springframework:spring-jdbc:5.1.0.RELEASE"
-    compile "com.fasterxml.jackson.module:jackson-module-kotlin:2.9.4"
+    compile ("org.springframework.boot:spring-boot-starter-web:2.0.5.RELEASE") {
+        exclude group: "com.fasterxml.jackson.core", module: "jackson-databind"
+    }
+    compile ("org.springframework:spring-jdbc:5.1.0.RELEASE")
+    compile "com.google.code.gson:gson:2.8.5"
 
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 }
