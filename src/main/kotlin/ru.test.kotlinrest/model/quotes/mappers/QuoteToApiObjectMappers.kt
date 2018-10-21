@@ -12,7 +12,8 @@ open class QuoteToApiObjectMappers : Mapper<Quote, QuoteApiObject> {
             QuoteApiObject(
                     id = from.id,
                     author = from.author.takeIf { it.isNotEmpty() },
-                    text = from.text.takeIf { it.isNotEmpty() }
+                    text = from.text.takeIf { it.isNotEmpty() },
+                    creationDate = from.creationDate.toDate()
             )
 
 }

@@ -53,6 +53,7 @@ dependencies {
     }
     compile ("org.springframework:spring-jdbc:5.1.0.RELEASE")
     compile ("com.google.code.gson:gson:2.8.5")
+    compile ("joda-time:joda-time:2.10")
 
     compile ("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version")
 }
