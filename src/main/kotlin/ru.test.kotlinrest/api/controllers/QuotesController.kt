@@ -1,5 +1,6 @@
 package ru.test.kotlinrest.api.controllers
 
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.RequestMapping
@@ -9,15 +10,15 @@ import ru.test.kotlinrest.api.objects.QuoteApiObject
 import ru.test.kotlinrest.base.Mapper
 import ru.test.kotlinrest.model.quotes.Quote
 import ru.test.kotlinrest.model.quotes.QuotesRepository
-import ru.test.kotlinrest.model.quotes.QuotesRepositoryMockImpl
-import ru.test.kotlinrest.model.quotes.mappers.QuoteToApiObjectMappers
 
 @RestController
 class QuotesController {
 
-    private val quotesRepository: QuotesRepository = QuotesRepositoryMockImpl()
+    @Autowired
+    private lateinit var quotesRepository: QuotesRepository
 
-    private val quoteToApiObjectMappers: Mapper<Quote, QuoteApiObject> = QuoteToApiObjectMappers()
+    @Autowired
+    private lateinit var quoteToApiObjectMappers: Mapper<Quote, QuoteApiObject>
 
     /**
      * Controller for GET /quotes

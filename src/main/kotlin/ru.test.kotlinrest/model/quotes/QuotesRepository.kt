@@ -1,12 +1,15 @@
 package ru.test.kotlinrest.model.quotes
 
+import org.springframework.stereotype.Repository
+
 interface QuotesRepository {
 
     fun getAll(): List<Quote>
 
 }
 
-class QuotesRepositoryMockImpl: QuotesRepository {
+@Repository
+open class QuotesRepositoryMockImpl: QuotesRepository {
 
     override fun getAll(): List<Quote> =
             listOf(
@@ -24,6 +27,11 @@ class QuotesRepositoryMockImpl: QuotesRepository {
                             id = 3,
                             author = "Бухал",
                             text = "Меньше пизди, больше делай!"
+                    ),
+                    Quote(
+                            id = 4,
+                            author = "Кочурин",
+                            text = "Блять, да стой ты!"
                     )
             )
 

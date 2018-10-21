@@ -1,10 +1,12 @@
 package ru.test.kotlinrest.model.quotes.mappers
 
+import org.springframework.stereotype.Component
 import ru.test.kotlinrest.api.objects.QuoteApiObject
 import ru.test.kotlinrest.base.Mapper
 import ru.test.kotlinrest.model.quotes.Quote
 
-class QuoteToApiObjectMappers : Mapper<Quote, QuoteApiObject> {
+@Component
+open class QuoteToApiObjectMappers : Mapper<Quote, QuoteApiObject> {
 
     override fun map(from: Quote): QuoteApiObject =
             QuoteApiObject(
