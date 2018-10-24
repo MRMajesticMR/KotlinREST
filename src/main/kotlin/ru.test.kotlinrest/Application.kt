@@ -9,9 +9,6 @@ import org.springframework.boot.builder.SpringApplicationBuilder
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 
 @SpringBootApplication
-@EnableAutoConfiguration(
-        exclude = [DataSourceAutoConfiguration::class, JacksonAutoConfiguration::class]
-)
 open class Application : SpringBootServletInitializer() {
 
     override fun configure(application: SpringApplicationBuilder): SpringApplicationBuilder =
