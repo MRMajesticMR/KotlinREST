@@ -53,6 +53,8 @@ dependencies {
         exclude group: "com.fasterxml.jackson.core", module: "jackson-databind"
     }
     compile ("org.springframework:spring-jdbc:5.1.0.RELEASE")
+    compile ("org.springframework.boot:spring-boot-starter-thymeleaf:2.0.5.RELEASE")
+
     compile ("com.google.code.gson:gson:2.8.5")
     compile ("joda-time:joda-time:2.10")
 

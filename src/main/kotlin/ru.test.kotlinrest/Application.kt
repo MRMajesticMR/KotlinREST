@@ -9,18 +9,8 @@ import org.springframework.boot.builder.SpringApplicationBuilder
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 
 @SpringBootApplication
-open class Application : SpringBootServletInitializer() {
+open class Application
 
-    override fun configure(application: SpringApplicationBuilder): SpringApplicationBuilder =
-            application.sources(Application::class.java)
-
-    companion object {
-
-        @Throws(Exception::class)
-        @JvmStatic
-        fun main(args: Array<String>) {
-            SpringApplication.run(Application::class.java, *args)
-        }
-
-    }
+fun main(args: Array<String>) {
+    SpringApplication.run(Application::class.java, *args)
 }
