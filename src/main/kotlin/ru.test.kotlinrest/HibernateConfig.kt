@@ -1,13 +1,12 @@
 package ru.test.kotlinrest
 
-import org.apache.tomcat.dbcp.dbcp2.BasicDataSource
+import com.mchange.v2.c3p0.ComboPooledDataSource
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.orm.hibernate5.HibernateTransactionManager
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean
 import org.springframework.transaction.annotation.EnableTransactionManagement
 import java.util.*
-
 
 @Configuration
 @EnableTransactionManagement
@@ -17,16 +16,16 @@ open class HibernateConfig {
     open fun sessionFactory() =
             LocalSessionFactoryBean().apply {
                 setDataSource(dataSource())
-                setPackagesToScan("ru.test.kotlinrest")
+                setPackagesToScan("ru.test.kotlinrest.models")
                 hibernateProperties = hibernateProperties()
             }
 
     @Bean
-    open fun dataSource() = BasicDataSource().apply {
-        driverClassName = "org.h2.Driver"
-        url = "jdbc:h2:mem:db;DB_CLOSE_DELAY=-1"
-        username = "sa"
-        password = "sa"
+    open fun dataSource() = ComboPooledDataSource().apply {
+        driverClass = "com.mysql.cj.jdbc.Driver"
+        jdbcUrl = "jdbc:mysql://localhost:3306/quotes?serverTimezone=UTC"
+        user = "root"
+        password = "Fylhttdbx2"
     }
 
     @Bean
@@ -35,7 +34,7 @@ open class HibernateConfig {
     }
 
     private fun hibernateProperties() = Properties().apply {
-        setProperty("hibernate.hbm2ddl.auto", "create-drop")
-        setProperty("hibernate.dialect", "org.hibernate.dialect.H2Dialect")
+        setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect")
+        setProperty("hibernate.temp.use_jdbc_metadata_defaults", "false")
     }
 }
