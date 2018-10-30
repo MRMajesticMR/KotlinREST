@@ -11,7 +11,7 @@ import java.util.*
 
 @Configuration
 @EnableTransactionManagement
-open class HibernateConf {
+open class HibernateConfig {
 
     @Bean
     open fun sessionFactory() =
