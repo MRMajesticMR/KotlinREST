@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RestController
 import ru.test.kotlinrest.api.objects.QuoteApiObject
 import ru.test.kotlinrest.base.Mapper
-import ru.test.kotlinrest.model.quotes.Quote
-import ru.test.kotlinrest.model.quotes.QuotesRepository
+import ru.test.kotlinrest.models.data.Quote
+import ru.test.kotlinrest.models.quotes.repository.QuotesRepository
 
 @RestController
 class QuotesController {
@@ -29,6 +29,6 @@ class QuotesController {
             produces = [MediaType.APPLICATION_JSON_UTF8_VALUE],
             consumes = [MediaType.APPLICATION_JSON_UTF8_VALUE])
     fun getQuotes(): ResponseEntity<List<QuoteApiObject>> =
-            ResponseEntity.ok(quotesRepository.getAll().map(quoteToApiObjectMappers::map))
+            ResponseEntity.ok(quotesRepository.all().map(quoteToApiObjectMappers::map))
 
 }
